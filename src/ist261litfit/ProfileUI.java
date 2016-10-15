@@ -186,7 +186,9 @@ public class ProfileUI extends javax.swing.JFrame {
         int tempWeight = Integer.parseInt(this.weightTextField.getText());   
         
         this.controller.createProfile(tempName, tempTotalHeight, tempWeight, this.controller);
-        
+        this.controller.calculateBMI();
+        this.controller.hideProfileUI();
+        this.controller.createNavController();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

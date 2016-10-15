@@ -12,6 +12,7 @@ package ist261litfit;
 public class ProfileController {
     private Profile profile;
     private ProfileUI profileUI;
+    private NavController navController;
     
     public ProfileController(){
        this.profileUI = new ProfileUI(this);
@@ -20,7 +21,19 @@ public class ProfileController {
     
     public void createProfile(String name, int height, int weight, ProfileController controller){
        this.profile = new Profile(name, height, weight, this);
-      
     }
     
+    public void hideProfileUI(){
+        this.profileUI.setVisible(false);
+    }
+    
+    public void createNavController(){
+        this.navController = new NavController(this);
+    }
+    
+    public void calculateBMI(){
+        int tempBMI = ((profile.getUserWeight() * 703)/(profile.getUserHeight()*profile.getUserHeight()));
+        profile.setUserBMI(tempBMI);
+        System.out.print("BMI: " + tempBMI);
+    }
 }
