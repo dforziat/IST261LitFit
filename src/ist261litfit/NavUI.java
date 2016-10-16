@@ -35,6 +35,13 @@ public class NavUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         calorieLabel = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        foodTextField = new javax.swing.JTextField();
+        caloriesTextField = new javax.swing.JTextField();
+        submitFoodButton = new javax.swing.JButton();
+        completeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,6 +54,32 @@ public class NavUI extends javax.swing.JFrame {
         calorieLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         calorieLabel.setText("2000");
 
+        jLabel3.setText("Input Food");
+
+        jLabel4.setText("Food:");
+
+        jLabel5.setText("Calories:");
+
+        foodTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                foodTextFieldActionPerformed(evt);
+            }
+        });
+
+        submitFoodButton.setText("Submit");
+        submitFoodButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitFoodButtonActionPerformed(evt);
+            }
+        });
+
+        completeButton.setText("Complete Log");
+        completeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                completeButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -57,11 +90,33 @@ public class NavUI extends javax.swing.JFrame {
                         .addGap(82, 82, 82)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(99, 99, 99)
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(calorieLabel)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(foodTextField))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(calorieLabel))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(caloriesTextField)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(completeButton)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(16, 16, 16)
+                                                .addComponent(submitFoodButton)))
+                                        .addGap(50, 50, 50)))))))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -72,11 +127,47 @@ public class NavUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(calorieLabel))
-                .addContainerGap(362, Short.MAX_VALUE))
+                .addGap(93, 93, 93)
+                .addComponent(jLabel3)
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(foodTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(caloriesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(submitFoodButton)
+                .addGap(46, 46, 46)
+                .addComponent(completeButton)
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void foodTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foodTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_foodTextFieldActionPerformed
+
+    private void submitFoodButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitFoodButtonActionPerformed
+        // TODO add your handling code here:
+        String tempFood = this.foodTextField.getText();
+        int tempCalories = Integer.parseInt(this.caloriesTextField.getText());
+        
+        this.controller.createFood(tempFood, tempCalories);
+        this.foodTextField.setText("");
+        this.caloriesTextField.setText("");
+    }//GEN-LAST:event_submitFoodButtonActionPerformed
+
+    private void completeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completeButtonActionPerformed
+       
+        
+        this.controller.createNewLog();
+        // create new log and the next food entered will be in a new food log object
+        
+    }//GEN-LAST:event_completeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -115,7 +206,14 @@ public class NavUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel calorieLabel;
+    private javax.swing.JTextField caloriesTextField;
+    private javax.swing.JButton completeButton;
+    private javax.swing.JTextField foodTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton submitFoodButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -12,11 +12,22 @@ package ist261litfit;
 public class NavController {
     private NavUI view;
     private ProfileController profileController;
+    private FoodLog foodLog;
+ 
     
     public NavController(ProfileController proCont){
         this.profileController = proCont;
         this.view = new NavUI(this);
         this.view.setVisible(true);
+        foodLog = new FoodLog();
     }
     
+    public void createFood(String foodName, int calories){
+       Food foodObj = new Food(foodName, calories, this);
+       this.foodLog.addFood(foodObj);
+    }
+    
+    public void createNewLog(){
+        this.foodLog = new FoodLog();
+    }
 }
