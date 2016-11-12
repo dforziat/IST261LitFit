@@ -29,7 +29,7 @@ public class Profile {
         userHeight = height;
         controller = Controller;
         calorieGoal = 2000; // example daily calories
-        System.out.print(this.userName + " " + this.userHeight + " "+ this.userWeight);
+        System.out.println(this.userName + " " + this.userHeight + " "+ this.userWeight);
     }
 
     /**

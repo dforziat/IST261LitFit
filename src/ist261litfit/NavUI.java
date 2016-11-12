@@ -191,7 +191,7 @@ public class NavUI extends javax.swing.JFrame {
     }//GEN-LAST:event_submitFoodButtonActionPerformed
 
     private void completeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completeButtonActionPerformed
-       
+        
         String tempLogName = this.logNameField.getText();
         this.controller.createNewLog(tempLogName);
         // create new log and the next food entered will be in a new food log object
@@ -203,9 +203,13 @@ public class NavUI extends javax.swing.JFrame {
         this.controller.switchLogView();
     }//GEN-LAST:event_editButtonActionPerformed
 
-    public void addFoodLog(String logName){
-       model.addElement(logName);
+    public void addFoodLog(String logName,int logNumber){
+       model.addElement(logNumber +"."+ logName);
        logList.setModel(model);
+    }
+    
+    public String getLogTitle(){
+        return (String)this.logList.getSelectedValue();
     }
     /**
      * @param args the command line arguments
