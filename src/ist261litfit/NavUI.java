@@ -209,7 +209,16 @@ public class NavUI extends javax.swing.JFrame {
     }
     
     public String getLogTitle(){
+      
         return (String)this.logList.getSelectedValue();
+    }
+    
+    public int getLogID(){
+        String selectedVal = (String)this.logList.getSelectedValue();
+        String[] idSplit = selectedVal.split("\\."); // delimits sting usuign a period. 
+        String idNum = idSplit[0]; // should be foodlog ID number
+     //  System.out.println("getLog ID method " +idNum);
+        return Integer.parseInt(idNum);
     }
     /**
      * @param args the command line arguments

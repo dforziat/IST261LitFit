@@ -5,12 +5,15 @@
  */
 package ist261litfit;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Dan
  */
 public class LogListUI extends javax.swing.JFrame {
      private NavController controller; 
+     private DefaultTableModel model;
     /**
      * Creates new form LogListUI
      */
@@ -22,6 +25,7 @@ public class LogListUI extends javax.swing.JFrame {
     public LogListUI(NavController controller){
         initComponents();
         this.controller = controller;
+        this.model = (DefaultTableModel) foodTable.getModel();
         
     }
 
@@ -48,10 +52,7 @@ public class LogListUI extends javax.swing.JFrame {
 
         foodTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Food", "Calories", "Protein", "Calcium"
@@ -129,6 +130,11 @@ public class LogListUI extends javax.swing.JFrame {
     
     public void changeLogName(String title){
         this.logTitle.setText(title);
+    }
+    
+    public void addFoodTable(String name, int calories, int protein, int calcium){
+        model.addRow(new Object[] {name, calories, protein, calcium});
+        this.foodTable.setModel(model);
     }
     /**
      * @param args the command line arguments
